@@ -1,0 +1,47 @@
+
+GenZInternational/
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ui/ (various UI components)
+│   │   │   ├── Header.tsx
+│   │   │   ├── Navigation.tsx
+│   │   │   └── StatsCard.tsx
+│   │   ├── hooks/
+│   │   │   ├── use-toast.ts
+│   │   │   └── useAuth.ts
+│   │   ├── lib/
+│   │   │   ├── authUtils.ts
+│   │   │   ├── queryClient.ts
+│   │   │   └── utils.ts
+│   │   ├── pages/
+│   │   │   ├── admin.tsx
+│   │   │   ├── home.tsx
+│   │   │   ├── landing.tsx
+│   │   │   ├── quiz.tsx
+│   │   │   ├── referrals.tsx
+│   │   │   ├── reports.tsx
+│   │   │   └── submit-accounts.tsx
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.css
+│   └── index.html
+├── server/
+│   ├── services/
+│   │   ├── firebase.ts
+│   │   └── sheets.ts
+│   ├── db.ts
+│   ├── index.ts
+│   ├── replitAuth.ts
+│   ├── routes.ts
+│   ├── storage.ts
+│   └── vite.ts
+├── shared/
+│   └── schema.ts
+├── drizzle.config.ts
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── tailwind.config.ts
+├── components.json
+└── .replit
