@@ -10,8 +10,6 @@ import { sheetsService } from "./services/sheets";
 import { shebaService } from "./services/sheba";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // ... existing code ...
-
   // Sheba SMM Panel API
   app.post('/api/sheba/smm', isAuthenticated, async (req: any, res) => {
     try {
@@ -33,6 +31,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ message: error instanceof Error ? error.message : "Shop API error" });
     }
   });
+
   // Auth middleware
   await setupAuth(app);
 
