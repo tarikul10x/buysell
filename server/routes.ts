@@ -7,8 +7,32 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { insertFileSchema, insertWithdrawalSchema, insertQuizSchema, insertNoticeSchema } from "@shared/schema";
 import { firebaseService } from "./services/firebase";
 import { sheetsService } from "./services/sheets";
+import { shebaService } from "./services/sheba";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // ... existing code ...
+
+  // Sheba SMM Panel API
+  app.post('/api/sheba/smm', isAuthenticated, async (req: any, res) => {
+    try {
+      const { action, ...params } = req.body;
+      const result = await shebaService.smmAction(action, params);
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ message: error instanceof Error ? error.message : "SMM API error" });
+    }
+  });
+
+  // Sheba Shop API
+  app.all('/api/sheba/shop/:endpoint(*)', isAuthenticated, async (req: any, res) => {
+    try {
+      const { endpoint } = req.params;
+      const result = await shebaService.shopAction(endpoint, req.method as any, req.method === 'GET' ? req.query : req.body);
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ message: error instanceof Error ? error.message : "Shop API error" });
+    }
+  });
   // Auth middleware
   await setupAuth(app);
 
